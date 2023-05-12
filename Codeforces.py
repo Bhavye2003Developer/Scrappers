@@ -37,7 +37,7 @@ def extractQuestionAddToFile(link):
 total_pages = 85
 
 for i in range(1,total_pages):
-    print(f"\nOn Page -> {i}\n\n")
+    print(f"\nOn Page -> {i}\n")
 
     f = open("questions.txt","a+")
     f.write(f"On Page -> {i}\n\n")
@@ -47,8 +47,8 @@ for i in range(1,total_pages):
     response = requests.get(url=url)
 
     if (response.ok):
-        print("Starting extracting text...")
         linkList = getProblemLink()
+        print(f"Starting extracting text...\nTotal Questions : {len(linkList)}\n")
         for link in linkList:
             status = extractQuestionAddToFile(link)
             if (status):
